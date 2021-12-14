@@ -18,7 +18,7 @@ jobs:
           echo Hello, from backend-service app !!
           
   docker:
-    uses: supriyashevate/my-common-workflow/.github/workflows/docker-image.yml@master
+    uses: supriyashevate/priv-workflow/.github/workflows/common-priv-workflow.yml@main
     with:
       image_name: webapp
       tag: backend-service
