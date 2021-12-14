@@ -1,0 +1,27 @@
+# This is a basic workflow to showcase the use of Reusable Workflows
+
+name: Reusable Workflow user
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  do-it:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: |
+          echo Hello, from app1 !!
+          
+  docker:
+    uses: supriyashevate/my-common-workflow/.github/workflows/docker-image.yml@master
+    with:
+      image_name: my-awesome-app
+      tag: backend-service
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USER }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
