@@ -5,9 +5,11 @@ name: Reusable Workflow user
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - dev
   pull_request:
-    branches: [ main ]
+    branches: 
+      - dev
 jobs:
   do-it:
     runs-on: ubuntu-latest
