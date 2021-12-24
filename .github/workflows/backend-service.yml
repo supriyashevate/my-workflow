@@ -13,7 +13,7 @@ on:
     types: [closed]
 jobs:
   do-it:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
           echo Hello, from backend-service app !!
           
   docker:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == 'true'
     uses: supriyashevate/my-common-workflow/.github/workflows/docker-image.yml@master
     with:
       image_name: webapp
