@@ -1,7 +1,6 @@
 # This is a basic workflow to showcase the use of Reusable Workflows
 
 name: Reusable Workflow
-
 on:
   push:
     branches: 
