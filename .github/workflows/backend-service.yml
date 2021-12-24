@@ -1,6 +1,6 @@
 # This is a basic workflow to showcase the use of Reusable Workflows
 
-name: Reusable Workflow user
+name: Reusable Workflow
 
 on:
   pull_request:
