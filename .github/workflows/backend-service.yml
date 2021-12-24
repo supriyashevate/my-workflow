@@ -1,14 +1,19 @@
 # This is a basic workflow to showcase the use of Reusable Workflows
 
-name: Reusable Workflow user
+name: Reusable Workflow
 
 on:
+  push:
+    branches: 
+      - dev
   pull_request:
     branches: 
       - dev
     types: [closed]
+    
 jobs:
   do-it:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +22,7 @@ jobs:
           echo Hello, from backend-service app !!
           
   docker:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     uses: supriyashevate/my-common-workflow/.github/workflows/docker-image.yml@master
     with:
       image_name: webapp
