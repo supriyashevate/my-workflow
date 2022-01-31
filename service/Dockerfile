@@ -8,7 +8,7 @@ WORKDIR /app
 # update and install dependency
 RUN apk update && apk upgrade
 
-COPY package*.json ./
+COPY ./service/ .
 RUN npm install
 RUN npm run build
 
