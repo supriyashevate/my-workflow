@@ -22,6 +22,7 @@ jobs:
       - name: Build and push frontend-service docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
+          context: ./service/
           push: true
           file: ./service/Dockerfile
           tags: ${{ secrets.DOCKER_USER }}/front-service:latest
