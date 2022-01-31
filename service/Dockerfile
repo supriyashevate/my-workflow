@@ -10,7 +10,7 @@ RUN apk update && apk upgrade
 
 COPY . /app
 
-CMD pwd && ls
+RUN pwd && ls
 RUN npm install
 RUN npm run build
 
