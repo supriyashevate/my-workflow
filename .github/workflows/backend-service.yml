@@ -19,6 +19,7 @@ jobs:
     with:
       image_name: webapp
       tag: backend-service
+      file: service/Dockerfile
     secrets:
       docker_username: ${{ secrets.DOCKER_USER }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
