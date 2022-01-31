@@ -7,11 +7,8 @@ WORKDIR /app
 
 # update and install dependency
 RUN apk update && apk upgrade
-# RUN apk add git
 
-# copy the app, note .dockerignore
-COPY . /app
-# RUN npm install --unsafe-perm -g node-sass
+COPY package*.json ./
 RUN npm install
 RUN npm run build
 
