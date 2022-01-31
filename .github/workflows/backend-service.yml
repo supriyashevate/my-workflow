@@ -5,24 +5,21 @@ on:
   push:
     branches: 
       - dev
-jobs:     
-  docker:
-    name: Push Docker image to Docker Hub
+jobs:
+  do-it:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Build and push frontend-service docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: ./service/
-          push: true
-          file: ./service/Dockerfile
-          tags: ${{ secrets.DOCKER_USER }}/front-service:latest
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: |
+          echo Hello, from backend-service app !!
+          
+  docker:
+    uses: supriyashevate/my-common-workflow/.github/workflows/docker-image.yml@master
+    with:
+      image_name: webapp
+      tag: backend-service
+      file: service/Dockerfile
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USER }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
